@@ -12,5 +12,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render: (h: any) => h(App),
 }).$mount("#app");
