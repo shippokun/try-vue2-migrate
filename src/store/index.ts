@@ -1,11 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore as _createStore } from "vuex";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function createStore() {
+  return _createStore({
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: {},
+  });
+}
