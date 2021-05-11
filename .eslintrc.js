@@ -10,6 +10,7 @@ module.exports = {
     "@vue/prettier",
     "@vue/prettier/@typescript-eslint",
   ],
+  plugins: ["import"],
   parserOptions: {
     ecmaVersion: 2020,
   },
@@ -19,12 +20,37 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)",
-      ],
+      files: ["**/*.spec.{j,t}s?(x)"],
       env: {
         jest: true,
+      },
+    },
+    {
+      files: ["*.js", "*.jsx", "*.ts", "*.tsx", "*.vue"],
+      rules: {
+        "import/order": [
+          "error",
+          {
+            alphabetize: {
+              order: "asc",
+              caseInsensitive: true,
+            },
+            groups: [
+              "builtin",
+              "external",
+              "internal",
+              ["parent", "sibling", "index"],
+            ],
+            "newlines-between": "always",
+            pathGroups: [
+              {
+                pattern: "@/**",
+                group: "internal",
+              },
+            ],
+            pathGroupsExcludedImportTypes: ["builtin"],
+          },
+        ],
       },
     },
   ],
